@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Juan Ignacio Tornero — QA Automation | Process & Functional Analysis" />
+  <title>Juan Ignacio Tornero — QA Automation | Process & Functional Analysis</title>
+
+  <style>
+    :root{
+      --bg: #0b1020;
+      --panel: rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.10);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.70);
+      --soft: rgba(255,255,255,0.55);
+      --accent: #60a5fa;
+      --shadow: 0 10px 30px rgba(0,0,0,0.35);
+      --radius: 18px;
+      --max: 1040px;
+    }
+
+    *{ box-sizing: border-box; }
+    html, body{ height: 100%; }
+    body{
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background:
+        radial-gradient(1000px 800px at 15% 10%, rgba(96,165,250,0.16), transparent 60%),
+        radial-gradient(900px 700px at 85% 20%, rgba(34,197,94,0.10), transparent 55%),
+        radial-gradient(1200px 900px at 50% 100%, rgba(255,255,255,0.06), transparent 55%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    a:hover{ text-decoration: underline; text-underline-offset: 4px; }
+
+    .wrap{ max-width: var(--max); margin: 0 auto; padding: 28px 18px 80px; }
+
+    /* Header */
+    header{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      position: sticky;
+      top: 0;
+      padding: 14px 0;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(to bottom, rgba(11,16,32,0.92), rgba(11,16,32,0.55));
+      z-index: 10;
+    }
+
+    .brand{
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 260px;
+    }
+    .brand strong{
+      font-size: 14px;
+      letter-spacing: 0.2px;
+    }
+    .meta{
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+    .meta span{
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      padding: 2px 10px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      border-radius: 999px;
+    }
+
+    .lang{
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      border-radius: 999px;
+      padding: 6px;
+      box-shadow: var(--shadow);
+      white-space: nowrap;
+    }
+    .lang a, .lang button{
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      font-size: 12px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+    .lang .active{
+      color: var(--text);
+      background: rgba(96,165,250,0.18);
+      border: 1px solid rgba(96,165,250,0.35);
+    }
+    .lang .disabled{
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+
+    /* Sections */
+    .section{
+      margin-top: 34px;
+      padding: 22px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .section h2{
+      margin: 0 0 14px;
+      font-size: 14px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* Hero */
+    .hero{
+      margin-top: 18px;
+      padding: 30px 26px;
+      border: 1px solid rgba(96,165,250,0.25);
+      background: linear-gradient(180deg, rgba(96,165,250,0.12), rgba(255,255,255,0.02));
+      border-radius: calc(var(--radius) + 6px);
+      box-shadow: var(--shadow);
+    }
+    .hero h1{
+      margin: 0;
+      font-size: clamp(28px, 4vw, 40px);
+      letter-spacing: -0.02em;
+      line-height: 1.12;
+    }
+    .hero .title{
+      margin-top: 10px;
+      font-size: 14px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .hero p{
+      margin: 14px 0 0;
+      max-width: 70ch;
+      color: var(--text);
+      font-size: 16px;
+    }
+    .cta{
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .btn{
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+    }
+    .btn.primary{
+      border-color: rgba(96,165,250,0.45);
+      background: rgba(96,165,250,0.16);
+    }
+    .btn.disabled{
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+    .btn small{
+      font-weight: 500;
+      color: var(--soft);
+    }
+
+    /* Layout grids */
+    .grid{
+      display: grid;
+      gap: 14px;
+    }
+    @media (min-width: 900px){
+      .grid.two{ grid-template-columns: 1fr 1fr; }
+      .grid.three{ grid-template-columns: 1fr 1fr 1fr; }
+      .grid.four{ grid-template-columns: 1fr 1fr; }
+    }
+    .card{
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.02);
+    }
+    .card h3{
+      margin: 0 0 8px;
+      font-size: 16px;
+      letter-spacing: -0.01em;
+    }
+    .card p{
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .pill{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.02);
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 10px;
+      white-space: nowrap;
+    }
+    .pill b{ color: var(--text); font-weight: 600; }
+
+    /* Bullets */
+    ul{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+    li{ margin: 7px 0; }
+
+    /* Projects */
+    .project h3{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 0 0 8px;
+    }
+    .project .stack{
+      font-size: 12px;
+      color: var(--soft);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+      padding: 4px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .project p{ margin: 0; color: var(--muted); font-size: 14px; }
+
+    /* Contact */
+    .contact{
+      display: grid;
+      gap: 10px;
+    }
+    @media (min-width: 900px){
+      .contact{ grid-template-columns: 1.2fr 0.8fr; }
+    }
+    .contact .links{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .link{
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: rgba(255,255,255,0.02);
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    footer{
+      margin-top: 26px;
+      color: var(--soft);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    /* Anchor offset for sticky header */
+    .anchor{ scroll-margin-top: 90px; }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <strong>Juan Ignacio Tornero</strong>
+        <div class="meta">
+          <span>Buenos Aires, Argentina (GMT-3)</span>
+          <span>tornerojuan@gmail.com</span>
+          <span>Español: Nativo | Inglés: B2/C1</span>
+        </div>
+      </div>
+
+      <nav class="lang" aria-label="Idioma">
+        <button class="active" type="button" aria-current="page">ES</button>
+        <button class="disabled" type="button" title="EN (próximamente)" disabled>EN</button>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <h1>QA Automation | Process &amp; Functional Analysis</h1>
+      <div class="title">Calidad técnica aplicada · análisis funcional · optimización de procesos</div>
+      <p>
+        Conectando automatización, análisis funcional y desarrollo para elevar la calidad de los productos digitales.
+      </p>
+
+      <div class="cta">
+        <a class="btn primary" href="#proyectos">Ver proyectos</a>
+        <a class="btn disabled" href="#" aria-disabled="true" title="Agregar link cuando publiques tu CV PDF">Descargar CV <small>(próximamente)</small></a>
+      </div>
+    </section>
+
+    <!-- SOBRE MI -->
+    <section class="section anchor" id="sobre-mi">
+      <h2>Sobre mí</h2>
+      <p style="margin:0;color:var(--text);max-width:80ch;">
+        Soy un profesional de QA con enfoque técnico y orientación a procesos. Trabajo integrando automatización,
+        análisis funcional y validación de flujos para asegurar calidad sin perder visión de negocio.
+        Cuento con experiencia en entornos de agencia digital, colaborando en múltiples proyectos y equipos en contextos dinámicos.
+        Me interesa la evolución de los equipos de QA hacia modelos más estructurados, escalables y apoyados en automatización.
+      </p>
+    </section>
+
+    <!-- IMPACTO -->
+    <section class="section anchor" id="impacto">
+      <h2>Impacto profesional</h2>
+
+      <div class="grid two">
+        <div class="card">
+          <h3>Transformación operativa</h3>
+          <p>
+            Diseño e implementación de un modelo operativo de QA orientado a automatización y escalabilidad, con
+            estandarización de criterios y documentación para adopción consistente.
+          </p>
+          <div class="pill"><b>Impacto transformacional:</b> +90 profesionales de distintos equipos (QA, DEV, DESIGN, PM)</div>
+        </div>
+
+        <div class="card">
+          <h3>Automatización aplicada</h3>
+          <p>
+            Automatización E2E con Playwright orientada a validaciones funcionales y visuales en entornos CMS y flujos dinámicos,
+            complementada con validación de integraciones vía APIs.
+          </p>
+          <div class="pill"><b>Enfoque:</b> claridad, reutilización, escalabilidad</div>
+        </div>
+      </div>
+
+      <ul>
+        <li>Automatizaciones de tareas manuales para eficientizar tiempos aumentando o manteniendo la calidad. <b>50-80% reducción de tiempo.</b></li>
+        <li>Coordinación transversal entre QA, desarrollo, producción y áreas funcionales para alinear criterios de calidad.</li>
+        <li>Definición de roadmap técnico, estándares de evolución profesional y transformación operativa de la agencia.</li>
+        <li>Documentación de flujos, criterios de validación y procesos para reducir retrabajo y mejorar consistencia.</li>
+      </ul>
+    </section>
+
+    <!-- CAPACIDADES CLAVE -->
+    <section class="section anchor" id="capacidades">
+      <h2>Capacidades clave</h2>
+      <div class="grid two">
+        <div class="card">
+          <h3>Liderazgo &amp; coordinación</h3>
+          <ul>
+            <li>Liderazgo técnico en iniciativas de calidad y evolución de equipos.</li>
+            <li>Coordinación transversal entre QA, desarrollo, producción y áreas funcionales.</li>
+            <li>Comunicación técnica enfocada en claridad, estandarización y alineación de criterios.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Proceso &amp; análisis</h3>
+          <ul>
+            <li>Diseño y estructuración de modelos operativos orientados a escalabilidad.</li>
+            <li>Pensamiento analítico aplicado a mejora de procesos y validaciones.</li>
+            <li>Auditoría de flujos para identificar riesgos y oportunidades de mejora.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROYECTOS -->
+    <section class="section anchor" id="proyectos">
+      <h2>Proyectos destacados</h2>
+
+      <div class="grid two">
+        <div class="card project">
+          <h3>
+            Framework de Automatización E2E (Playwright)
+            <span class="stack">Playwright · JavaScript · Node.js</span>
+          </h3>
+          <p>
+            Diseño e implementación de un framework de automatización orientado a validaciones funcionales y visuales en entornos
+            CMS y flujos dinámicos. Enfoque en estructura escalable, claridad de test cases y reutilización de componentes.
+          </p>
+        </div>
+
+        <div class="card project">
+          <h3>
+            QA Skillmap &amp; Roadmap Técnico
+            <span class="stack">Operación · Estándares · Evolución</span>
+          </h3>
+          <p>
+            Diseño de un roadmap operativo para la evolución técnica del equipo de QA, incluyendo definición de job descriptions,
+            estándares y niveles de crecimiento. Enfoque en estructuración de conocimiento y profesionalización del rol. Seguimiento, obtención de métricas. Desarrollo de las soluciones automatizadas de QA.
+          </p>
+        </div>
+
+        <div class="card project">
+          <h3>
+            Auditoría de Procesos y Diagramación
+            <span class="stack">Análisis · Diagramas · Mejora continua</span>
+          </h3>
+          <p>
+            Análisis de flujos funcionales y procesos de validación con identificación de puntos de riesgo y oportunidades de mejora.
+            Creación de diagramas y documentación estructurada para optimizar validaciones y reducir retrabajo.
+          </p>
+        </div>
+
+        <div class="card project">
+          <h3>
+            Tool Interna / Plugin de Validación
+            <span class="stack">JavaScript · DOM · Validaciones</span>
+          </h3>
+          <p>
+            Desarrollo de herramienta interna para asistir validaciones manuales y estructurar criterios de calidad.
+            Orientada a estandarizar procesos y reducir dependencia de revisiones subjetivas.
+          </p>
+        </div>
+      </div>
+
+      <p style="margin:14px 0 0;color:var(--soft);font-size:12px;">
+        Nota: los links a repos/demos se incorporarán cuando el contenido esté publicado y curado para consumo externo.
+      </p>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section anchor" id="skills">
+      <h2>Skills</h2>
+
+      <div class="grid four">
+        <div class="card">
+          <h3>Automatización</h3>
+          <ul>
+            <li>Playwright (E2E funcional y visual)</li>
+            <li>JavaScript / Node.js</li>
+            <li>SQL (SELECT, JOIN, filtros)</li>
+            <li>Diseño de test cases</li>
+            <li>Validación de flujos dinámicos</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Análisis &amp; Procesos</h3>
+          <ul>
+            <li>Análisis funcional</li>
+            <li>Auditoría de procesos</li>
+            <li>Diagramación de flujos</li>
+            <li>Optimización operativa</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Integración &amp; Calidad</h3>
+          <ul>
+            <li>Testing de APIs (Postman)</li>
+            <li>Validación CMS</li>
+            <li>Cross-browser / cross-device</li>
+            <li>Accesibilidad (WCAG, axe DevTools)</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Herramientas</h3>
+          <ul>
+            <li>JIRA / Xray / Zephyr</li>
+            <li>Git &amp; GitHub</li>
+            <li>Documentación estructurada</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCACIÓN -->
+    <section class="section anchor" id="formacion">
+      <h2>Educación y formación</h2>
+      <ul>
+        <li>Taller de Playwright – Atenea Conocimientos</li>
+        <li>Cypress Avanzado – Pushing-it</li>
+        <li>Testing / Full Stack JS – Codo a Codo (GCBA)</li>
+        <li>IA en Programación – Digital House</li>
+        <li>Agile &amp; Automated Testing – Coursera</li>
+        <li>Business Process Modelling – Coursera</li>
+        <li>Programación Web FrontEnd – Fundación ProEM</li>
+        <li>Innovación y Transformación Digital – Universidad Di Tella</li>
+      </ul>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="section anchor" id="contacto">
+      <h2>Contacto</h2>
+
+      <div class="contact">
+        <div class="card">
+          <h3 style="margin:0 0 8px;">Disponible para oportunidades</h3>
+          <p style="margin:0;color:var(--muted);">
+            Si quieres conversar sobre QA Automation, análisis funcional o mejora de procesos de calidad,
+            puedes contactarme por estos canales.
+          </p>
+
+          <div class="links">
+            <a class="link" href="mailto:tornerojuan@gmail.com">Email</a>
+            <a class="link" href="https://www.linkedin.com/in/juan-tornero" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a class="link" href="https://github.com/jitornero" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="margin:0 0 8px;">Navegación</h3>
+          <ul style="margin:0;">
+            <li><a href="#sobre-mi">Sobre mí</a></li>
+            <li><a href="#impacto">Impacto</a></li>
+            <li><a href="#proyectos">Proyectos</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#formacion">Formación</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Juan Ignacio Tornero · GitHub Pages
+    </footer>
+  </div>
+
+  <script>
+    // Solo para el año del footer. El toggle EN se activará cuando agreguemos el contenido en inglés.
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
