@@ -293,6 +293,24 @@
 
     /* Anchor offset for sticky header */
     .anchor{ scroll-margin-top: 90px; }
+
+    @media (max-width: 560px){
+  header{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .brand{
+    min-width: 0;          /* clave: permite encogerse */
+    width: 100%;
+  }
+
+  .lang{
+    align-self: flex-end;  /* lo pega a la derecha, pero dentro del header */
+  }
+}
+
   </style>
 </head>
 
