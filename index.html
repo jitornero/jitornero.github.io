@@ -26,9 +26,9 @@
       margin: 0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       background:
-        radial-gradient(1000px 800px at 15% 10%, rgba(96,165,250,0.16), transparent 60%),
+        /* radial-gradient(1000px 800px at 15% 10%, rgba(96,165,250,0.16), transparent 60%),
         radial-gradient(900px 700px at 85% 20%, rgba(34,197,94,0.10), transparent 55%),
-        radial-gradient(1200px 900px at 50% 100%, rgba(255,255,255,0.06), transparent 55%),
+        radial-gradient(1200px 900px at 50% 100%, rgba(255,255,255,0.06), transparent 55%), */
         var(--bg);
       color: var(--text);
       line-height: 1.55;
@@ -198,12 +198,14 @@
       .grid.three{ grid-template-columns: 1fr 1fr 1fr; }
       .grid.four{ grid-template-columns: 1fr 1fr; }
     }
-    .card{
-      padding: 16px;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      background: rgba(255,255,255,0.02);
-    }
+.card{
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: rgba(255,255,255,0.02);
+}
     .card h3{
       margin: 0 0 8px;
       font-size: 16px;
@@ -214,6 +216,9 @@
       color: var(--muted);
       font-size: 14px;
     }
+    #impacto .card .pill {
+  margin-top: auto;
+}
     .pill{
   display: inline-block;              /* en vez de inline-flex */
   padding: 4px 10px;
@@ -359,58 +364,38 @@
 
     <!-- IMPACTO -->
     <section class="section anchor" id="impacto">
-      <h2>Impacto profesional</h2>
+      <h2>Propuesta de Valor</h2>
 
-      <div class="grid two">
-        <div class="card">
-          <h3>Transformación operativa</h3>
-          <p>
-            Diseño e implementación de un modelo operativo de QA orientado a automatización y escalabilidad, con
-            estandarización de criterios y documentación para adopción consistente.
-          </p>
-          <div class="pill"><b>Impacto transformacional:</b> +90 profesionales de distintos equipos (QA, DEV, DESIGN, PM)</div>
-        </div>
+<div class="grid three">
+<div class="card">
+  <h3>Automatización y Eficiencia Directa</h3>
+  <p>
+    Desarrollo de scripts, plugins y frameworks a medida (Playwright, JS) para automatizar tareas de alta frecuencia y eliminar cuellos de botella operativos en los ciclos de testing.
+  </p>
+  <div class="pill"><b>Resultado:</b> Reducción de hasta un 70-90% en tiempos de ejecución de pruebas manuales.</div>
+</div>
 
-        <div class="card">
-          <h3>Automatización aplicada</h3>
-          <p>
-            Automatización E2E con Playwright orientada a validaciones funcionales y visuales en entornos CMS y flujos dinámicos,
-            complementada con validación de integraciones vía APIs.
-          </p>
-          <div class="pill"><b>Enfoque:</b> claridad, reutilización, escalabilidad</div>
-        </div>
-      </div>
+<div class="card">
+  <h3>Auditoría y Optimización de Procesos</h3>
+  <p>
+    Análisis de flujos de trabajo a través de entrevistas y relevamientos para detectar ineficiencias y oportunidades de mejora, entregando un plan de acción para optimizar el proceso auditado.
+  </p>
+  <div class="pill"><b>Impacto:</b> Ahorro de tiempo estimado del 50-60% y decisiones de mejora basadas en datos.</div>
+</div>
 
-      <ul>
-        <li>Automatizaciones de tareas manuales para eficientizar tiempos aumentando o manteniendo la calidad. <b>50-80% reducción de tiempo.</b></li>
-        <li>Coordinación transversal entre QA, desarrollo, producción y áreas funcionales para alinear criterios de calidad.</li>
-        <li>Definición de roadmap técnico, estándares de evolución profesional y transformación operativa de la agencia.</li>
-        <li>Documentación de flujos, criterios de validación y procesos para reducir retrabajo y mejorar consistencia.</li>
-      </ul>
+<div class="card">
+  <h3>Transformación Operativa y Estrategia QA</h3>
+  <p>
+    Diseño de la estructura de equipos de Calidad, incluyendo planes de carrera, job descriptions, roadmaps técnicos y métricas para la evolución y profesionalización del área.
+  </p>
+  <div class="pill"><b>Resultado:</b> Capacidades de servicio ampliadas y nuevo modelo operativo.</div>
+</div>
+</div>
+
+
     </section>
 
-    <!-- CAPACIDADES CLAVE -->
-    <section class="section anchor" id="capacidades">
-      <h2>Capacidades clave</h2>
-      <div class="grid two">
-        <div class="card">
-          <h3>Liderazgo &amp; coordinación</h3>
-          <ul>
-            <li>Liderazgo técnico en iniciativas de calidad y evolución de equipos.</li>
-            <li>Coordinación transversal entre QA, desarrollo, producción y áreas funcionales.</li>
-            <li>Comunicación técnica enfocada en claridad, estandarización y alineación de criterios.</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Proceso &amp; análisis</h3>
-          <ul>
-            <li>Diseño y estructuración de modelos operativos orientados a escalabilidad.</li>
-            <li>Pensamiento analítico aplicado a mejora de procesos y validaciones.</li>
-            <li>Auditoría de flujos para identificar riesgos y oportunidades de mejora.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+
 
     <!-- PROYECTOS -->
     <section class="section anchor" id="proyectos">
@@ -420,13 +405,15 @@
         <div class="card project">
           <h3>
             Framework de Automatización E2E (Playwright)
-            <span class="stack">Playwright · JavaScript · Node.js</span>
+            <span class="stack">Playwright · JavaScript/Typescript · Node.js</span>
           </h3>
           <p>
-            Diseño e implementación de un framework de automatización orientado a validaciones funcionales y visuales en entornos
-            CMS y flujos dinámicos. Enfoque en estructura escalable, claridad de test cases y reutilización de componentes.
+Diseñé un framework para automatizar el testing de contenido a gran escala para los modelos de Ford US y CA, un proceso que abarca miles de páginas y componentes. La solución combina Playwright para testing visual y de navegación, procesa hojas de cálculo con excel.js, y utiliza IA para validaciones de datos complejas, culminando en la generación de reportes automáticos. El resultado fue una reducción del 70-80% del esfuerzo manual.
           </p>
         </div>
+
+
+        
 
         <div class="card project">
           <h3>
@@ -445,8 +432,7 @@
             <span class="stack">Análisis · Diagramas · Mejora continua</span>
           </h3>
           <p>
-            Análisis de flujos funcionales y procesos de validación con identificación de puntos de riesgo y oportunidades de mejora.
-            Creación de diagramas y documentación estructurada para optimizar validaciones y reducir retrabajo.
+Realicé una auditoría del proceso de QA para "Eventos", identificando oportunidades clave para disminuir issues. Presenté una propuesta de rediseño y automatización con un ahorro de tiempo estimado del 50-60%, sentando las bases para una operación más escalable.
           </p>
         </div>
 
@@ -456,14 +442,12 @@
             <span class="stack">JavaScript · DOM · Validaciones</span>
           </h3>
           <p>
-            Desarrollo de herramienta interna para asistir validaciones manuales y estructurar criterios de calidad.
-            Orientada a estandarizar procesos y reducir dependencia de revisiones subjetivas.
+  Diseñé un plugin que centraliza herramientas de QA en una interfaz simple, permitiendo que usuarios no técnicos ejecuten pruebas complejas de forma autónoma. Esto no solo estandariza la ejecución y mejora la fiabilidad de los datos, sino que acelera cada tarea en un 60-70%.
           </p>
         </div>
       </div>
 
       <p style="margin:14px 0 0;color:var(--soft);font-size:12px;">
-        Nota: los links a repos/demos se incorporarán cuando el contenido esté publicado y curado para consumo externo.
       </p>
     </section>
 
