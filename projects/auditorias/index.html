@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Auditoría QA y Automatización</title>
+
+  <style>
+    :root {
+      --text: #111;
+      --subtext: #555;
+      --accent: #2f6fed;
+      --border: #e5e5e5;
+      --bg: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+      padding: 16px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    header {
+      margin-bottom: 32px;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      margin-top: 32px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 4px;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      margin-top: 16px;
+      margin-bottom: 8px;
+    }
+
+    p {
+      margin-bottom: 12px;
+      color: var(--subtext);
+    }
+
+    ul {
+      margin-left: 18px;
+      margin-bottom: 16px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    .back {
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+      display: inline-block;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .metric {
+      border: 1px solid var(--border);
+      padding: 12px;
+      border-radius: 6px;
+      background: #fafafa;
+      font-size: 0.95rem;
+    }
+
+    .image-placeholder {
+      border: 1px solid var(--border);
+      padding: 10px;
+      text-align: center;
+      margin: 10px 0;
+      font-size: 0.9rem;
+      color: var(--subtext);
+      background: #fafafa;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 10px;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    th {
+      background: #f5f5f5;
+    }
+
+    @media (min-width: 768px) {
+      body {
+        padding: 32px;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      .metrics {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <a href="/" class="back">← Volver</a>
+
+  <header>
+    <h1>Auditoría de procesos QA y diseño de automatización</h1>
+    <p>
+      Optimización de un flujo de validación de assets digitales de alto volumen mediante análisis de proceso y automatización.
+    </p>
+
+    <div class="metrics">
+      <div class="metric">⏱️ Tiempo por asset: 5–10 min → <b>&lt;1 min</b></div>
+      <div class="metric">⏱️ Tiempo por campaña: 1–2 h → <b>10–20 min</b></div>
+      <div class="metric">⚠️ Error rate: Medio/Alto → <b>Bajo</b></div>
+      <div class="metric">📈 Escalabilidad: Lineal → <b>No lineal</b></div>
+    </div>
+  </header>
+
+  <main>
+
+    <section>
+      <h2>Contexto</h2>
+      <p>
+        Este caso analiza un flujo operativo de validación de assets digitales en un entorno de producción de campañas comerciales de alto volumen.
+      </p>
+      <p>
+        Cada campaña implica la validación de múltiples piezas digitales que deben cumplir con especificaciones técnicas, lineamientos de marca y contenido variable.
+      </p>
+    </section>
+
+    <section>
+      <h2>Problema</h2>
+      <ul>
+        <li>Validaciones manuales repetitivas</li>
+        <li>Alto consumo de tiempo operativo</li>
+        <li>Dependencia del conocimiento individual</li>
+        <li>Mayor margen de error</li>
+        <li>Dificultad para escalar</li>
+        <li>Falta de trazabilidad</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Enfoque</h2>
+      <p>
+        El abordaje se centró en comprender el proceso completo antes de automatizar:
+      </p>
+      <ul>
+        <li>Análisis del flujo end-to-end</li>
+        <li>Identificación de inputs y outputs</li>
+        <li>Detección de cuellos de botella</li>
+        <li>Separación entre datos estandarizados y variables</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Proceso</h2>
+      <p>Flujo general:</p>
+      <ul>
+        <li>Cliente → Producción → QA → Entrega</li>
+      </ul>
+
+      <div class="image-placeholder">
+        <img src="images/proceso.jpg">
+      </div>
+
+      <p>
+Se identificaron puntos clave de automatización a lo largo del flujo, incluyendo la gestión del pedido y los entregables, la validación en sus distintas instancias y la generación de reportes.
+
+Se utilizó IA para el reordenamiento y la validación de la documentación, así como para el análisis de contenido de los entregables.
+
+En paralelo, se incorporó automatización para la creación de artefactos (reportes) y la validación de metadata de banners mediante reglas de comparación.      </p>
+
+      <!-- <div class="image-placeholder">
+        [Imagen de puntos de automatización en el proceso]
+      </div> -->
+    </section>
+
+    <section>
+      <h2>Solución</h2>
+
+      <h3>Herramienta de automatización</h3>
+      <p>
+        Se diseñó una herramienta para validar automáticamente especificaciones técnicas y contenido.
+      </p>
+
+      <ul>
+        <li><b>Inputs:</b> brief + assets</li>
+        <li><b>Proceso:</b> comparación automática</li>
+        <li><b>Outputs:</b> reportes de validación</li>
+      </ul>
+
+      <div class="image-placeholder">
+        <img src="images/diagrama_solución.png">
+        <p style="font-size:0.8rem; color:#777;">
+  Arquitectura simplificada del flujo de validación: inputs, procesamiento y generación de reportes. 
+  <br>
+  <span style="opacity:0.8;">Línea punteada: inputs opcionales para validación extendida.</span>
+</p>
+      </div>
+
+      <h3>Principios de diseño</h3>
+      <ul>
+        <li>Intuitiva</li>
+        <li>Escalable</li>
+        <li>Integrable</li>
+        <li>Precisa</li>
+      </ul>
+
+      <h3>Automatización aplicada</h3>
+      <ul>
+        <li>Validación de metadata</li>
+        <li>Naming conventions</li>
+        <li>Comparación contra specs</li>
+        <li>Generación de reportes</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Resultados</h2>
+
+      <table>
+        <tr>
+          <th>Métrica</th>
+          <th>Antes</th>
+          <th>Después</th>
+        </tr>
+        <tr>
+          <td>Tiempo por asset</td>
+          <td>5–10 min</td>
+          <td>&lt;1 min</td>
+        </tr>
+        <tr>
+          <td>Tiempo por campaña</td>
+          <td>1–2 h</td>
+          <td>10–20 min</td>
+        </tr>
+        <tr>
+          <td>Error rate</td>
+          <td>Medio/Alto</td>
+          <td>Bajo</td>
+        </tr>
+        <tr>
+          <td>Escalabilidad</td>
+          <td>Lineal</td>
+          <td>No lineal</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <h2>Ejemplos</h2>
+
+      <div class="image-placeholder">
+                <img src="images/UI_01.jpg">
+        <p style="font-size:0.8rem; color:#777;">
+  Interfaz panel principal de la tool. 
+  <br>
+</p>
+      </div>
+
+      <div class="image-placeholder">
+        <img src="images/UI_02.jpg">
+                <p style="font-size:0.8rem; color:#777;">
+
+  Interfaz DE TESTING. 
+  <br>
+</p>      </div>
+
+      <div class="image-placeholder">
+        <img src="images/UI_03.jpg">
+                <p style="font-size:0.8rem; color:#777;">
+
+  Resultados ejecución testing automatizado. 
+  <br>
+</p>      </div>
+
+    </section>
+
+    <section>
+      <h2>Criterios de diseño y decisiones técnicas</h2>
+      <ul>
+        <li>La automatización se define a partir del entendimiento completo del proceso, no al revés</li>
+        <li>La estandarización de datos es un requisito previo para escalar</li>
+        <li>El mayor impacto se obtiene optimizando el flujo, no solo las tareas individuales</li>
+        <li>La automatización permite liberar tiempo operativo y enfocarlo en tareas de mayor valor</li>
+        <li>El uso de IA se evalúa según el tipo de problema:<br>
+-> útil en procesamiento de información no estructurada (ej: documentación, contenido)<br>
+-> no recomendable en validaciones críticas, donde se priorizan reglas determinísticas</li>
+      </ul>
+
+      
+
+
+
+
+
+    </section>
+
+    <section>
+      <h2>Cierre</h2>
+      <p>
+        Este enfoque es aplicable a cualquier proceso que maneje alto volumen de validaciones y requiera consistencia, trazabilidad y escalabilidad.
+      </p>
+    </section>
+
+  </main>
+
+</body>
+</html>
