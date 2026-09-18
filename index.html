@@ -1,566 +1,193 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Juan Ignacio Tornero — QA Automation | Process & Functional Analysis" />
-  <title>Juan Ignacio Tornero — QA Automation | Process & Functional Analysis</title>
-
-  <style>
-    :root{
-      --bg: #0b1020;
-      --panel: rgba(255,255,255,0.04);
-      --border: rgba(255,255,255,0.10);
-      --text: rgba(255,255,255,0.92);
-      --muted: rgba(255,255,255,0.70);
-      --soft: rgba(255,255,255,0.55);
-      --accent: #60a5fa;
-      --shadow: 0 10px 30px rgba(0,0,0,0.35);
-      --radius: 18px;
-      --max: 1040px;
-    }
-
-    *{ box-sizing: border-box; }
-    html, body{ height: 100%; }
-    body{
-      margin: 0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      background:
-        /* radial-gradient(1000px 800px at 15% 10%, rgba(96,165,250,0.16), transparent 60%),
-        radial-gradient(900px 700px at 85% 20%, rgba(34,197,94,0.10), transparent 55%),
-        radial-gradient(1200px 900px at 50% 100%, rgba(255,255,255,0.06), transparent 55%), */
-        var(--bg);
-      color: var(--text);
-      line-height: 1.55;
-    }
-
-    a{ color: inherit; text-decoration: none; }
-    a:hover{ text-decoration: underline; text-underline-offset: 4px; }
-
-    .wrap{ max-width: var(--max); margin: 0 auto; padding: 28px 18px 80px; }
-
-    /* Header */
-    header{
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      position: sticky;
-      top: 0;
-      padding: 14px 0;
-      backdrop-filter: blur(10px);
-      background: linear-gradient(to bottom, rgba(11,16,32,0.92), rgba(11,16,32,0.55));
-      z-index: 10;
-    }
-
-    .brand{
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      min-width: 260px;
-    }
-    .brand strong{
-      font-size: 14px;
-      letter-spacing: 0.2px;
-    }
-    .meta{
-      font-size: 12px;
-      color: var(--muted);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-    }
-    .meta span{
-      display: inline-flex;
-      gap: 8px;
-      align-items: center;
-      padding: 2px 10px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.03);
-      border-radius: 999px;
-    }
-
-    .lang{
-      display: inline-flex;
-      gap: 10px;
-      align-items: center;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.03);
-      border-radius: 999px;
-      padding: 6px;
-      box-shadow: var(--shadow);
-      white-space: nowrap;
-    }
-    .lang a, .lang button{
-      border: 0;
-      background: transparent;
-      color: var(--muted);
-      font-size: 12px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      cursor: pointer;
-    }
-    .lang .active{
-      color: var(--text);
-      background: rgba(96,165,250,0.18);
-      border: 1px solid rgba(96,165,250,0.35);
-    }
-    .lang .disabled{
-      opacity: 0.55;
-      cursor: not-allowed;
-    }
-
-    /* Sections */
-    .section{
-      margin-top: 34px;
-      padding: 22px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.03);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-    .section h2{
-      margin: 0 0 14px;
-      font-size: 14px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-
-    /* Hero */
-    .hero{
-      margin-top: 18px;
-      padding: 30px 26px;
-      border: 1px solid rgba(96,165,250,0.25);
-      background: linear-gradient(180deg, rgba(96,165,250,0.12), rgba(255,255,255,0.02));
-      border-radius: calc(var(--radius) + 6px);
-      box-shadow: var(--shadow);
-    }
-    .hero h1{
-      margin: 0;
-      font-size: clamp(28px, 4vw, 40px);
-      letter-spacing: -0.02em;
-      line-height: 1.12;
-    }
-    .hero .title{
-      margin-top: 10px;
-      font-size: 14px;
-      color: var(--muted);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-    .hero p{
-      margin: 14px 0 0;
-      max-width: 70ch;
-      color: var(--text);
-      font-size: 16px;
-    }
-    .cta{
-      margin-top: 18px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .btn{
-      display: inline-flex;
-      gap: 10px;
-      align-items: center;
-      padding: 10px 14px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.03);
-      color: var(--text);
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.2px;
-    }
-    .btn.primary{
-      border-color: rgba(96,165,250,0.45);
-      background: rgba(96,165,250,0.16);
-    }
-    .btn.disabled{
-      opacity: 0.55;
-      cursor: not-allowed;
-    }
-    .btn small{
-      font-weight: 500;
-      color: var(--soft);
-    }
-
-    /* Layout grids */
-    .grid{
-      display: grid;
-      gap: 14px;
-    }
-    @media (min-width: 900px){
-      .grid.two{ grid-template-columns: 1fr 1fr; }
-      .grid.three{ grid-template-columns: 1fr 1fr 1fr; }
-      .grid.four{ grid-template-columns: 1fr 1fr; }
-    }
-.card{
-  display: flex;
-  flex-direction: column;
-  padding: 16px;
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  background: rgba(255,255,255,0.02);
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Juan Ignacio Tornero — Senior QA Automation Engineer focused on automation engineering, AI-assisted quality, and process improvement.">
+<title>Juan Ignacio Tornero — Automation Engineering · AI · Quality Operations</title>
+<style>
+:root{
+  --bg:#0a0b0d; --panel:#111317; --panel2:#15181d; --text:#f4f4f1;
+  --muted:#9da3ad; --line:#282c33; --accent:#8dd3ff; --accent2:#b7ffcf;
+  --max:1180px;
 }
-    .card h3{
-      margin: 0 0 8px;
-      font-size: 16px;
-      letter-spacing: -0.01em;
-    }
-    .card p{
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-    }
-    #impacto .card .pill {
-  margin-top: auto;
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
+a{color:inherit;text-decoration:none} a:hover{opacity:.78}
+.wrap{max-width:var(--max);margin:auto;padding:0 28px}
+nav{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+.brand{font-weight:700;letter-spacing:-.02em}.navlinks{display:flex;gap:26px;color:var(--muted);font-size:14px}
+.hero{min-height:700px;display:flex;flex-direction:column;justify-content:center;padding:90px 0 110px}
+.eyebrow,.kicker{font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);font-weight:700}
+h1{font-size:clamp(54px,8vw,104px);line-height:.94;letter-spacing:-.065em;max-width:1050px;margin:22px 0 30px;font-weight:650}
+.hero p{font-size:clamp(18px,2vw,23px);max-width:720px;color:#c5c9cf;margin:0}
+.actions{display:flex;gap:12px;margin-top:38px;flex-wrap:wrap}
+.btn{padding:12px 17px;border:1px solid var(--line);border-radius:999px;font-size:14px}
+.btn.primary{background:var(--text);color:var(--bg);border-color:var(--text)}
+.submeta{margin-top:72px;color:var(--muted);font-size:13px;display:flex;gap:24px;flex-wrap:wrap}
+.manifesto{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:100px 0}
+.manifesto blockquote{font-size:clamp(32px,5vw,62px);line-height:1.05;letter-spacing:-.045em;max-width:1000px;margin:0}
+.manifesto p{max-width:650px;color:var(--muted);font-size:17px;margin:28px 0 0}
+.process{margin-top:62px;display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.process div{background:var(--bg);padding:20px 16px;font-size:13px}.process b{display:block;color:var(--accent);margin-bottom:5px}
+section{padding:110px 0}.section-head{display:flex;justify-content:space-between;gap:30px;align-items:end;margin-bottom:52px}
+.section-head h2{font-size:clamp(40px,6vw,72px);letter-spacing:-.05em;line-height:1;margin:10px 0 0}
+.section-head p{color:var(--muted);max-width:470px;margin:0}
+.capabilities{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+.cap{padding:30px 34px 32px 0;border-bottom:1px solid var(--line)}
+.cap+.cap{padding-left:34px;border-left:1px solid var(--line)}
+.num{color:var(--accent);font-size:12px}.cap h3{font-size:24px;margin:28px 0 14px;letter-spacing:-.025em}.cap p{color:var(--muted);margin:0}
+.work{background:#0d0f12}.case{border-top:1px solid var(--line);padding:54px 0;display:grid;grid-template-columns:.7fr 1.3fr;gap:60px}
+.case:last-child{border-bottom:1px solid var(--line)}
+.case-meta{color:var(--muted);font-size:13px}.case h3{font-size:clamp(32px,4vw,54px);line-height:1.03;letter-spacing:-.045em;margin:0 0 20px}
+.case p{color:#b8bdc5;max-width:700px;font-size:17px}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px}.tag{border:1px solid var(--line);border-radius:999px;padding:6px 10px;font-size:12px;color:var(--muted)}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:32px}.metric{padding:18px;border:1px solid var(--line);background:var(--panel)}
+.metric strong{font-size:26px;display:block;letter-spacing:-.04em}.metric span{font-size:12px;color:var(--muted)}
+.experience{display:grid;grid-template-columns:1fr 2fr;gap:70px}.timeline{border-top:1px solid var(--line)}
+.role{display:grid;grid-template-columns:150px 1fr;gap:25px;padding:28px 0;border-bottom:1px solid var(--line)}
+.role time{color:var(--muted);font-size:13px}.role h3{margin:0;font-size:20px}.role p{margin:7px 0 0;color:var(--muted)}
+.aboutgrid{display:grid;grid-template-columns:1.2fr .8fr;gap:80px}.aboutcopy{font-size:clamp(28px,4vw,46px);line-height:1.12;letter-spacing:-.04em;margin:0}
+.aboutside{color:var(--muted)}.expertise{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+.expertise span{padding:8px 12px;border:1px solid var(--line);border-radius:999px;font-size:13px}
+.education{border-top:1px solid var(--line);padding-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:12px 50px;color:var(--muted)}
+.cta-end{text-align:center;padding:150px 0}.cta-end h2{font-size:clamp(48px,8vw,96px);letter-spacing:-.06em;line-height:.95;margin:12px auto 28px;max-width:950px}
+.cta-end p{color:var(--muted);font-size:18px}
+footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--muted);display:flex;justify-content:space-between;font-size:12px}
+@media(max-width:760px){
+ .navlinks{display:none}.hero{min-height:620px}.process{grid-template-columns:1fr}
+ .capabilities,.case,.experience,.aboutgrid,.education{grid-template-columns:1fr}.cap+.cap{padding-left:0;border-left:0}
+ .case{gap:24px}.metrics{grid-template-columns:1fr}.role{grid-template-columns:1fr;gap:8px}
+ .section-head{align-items:start;flex-direction:column}.wrap{padding:0 20px}
 }
-    .pill{
-  display: inline-block;              /* en vez de inline-flex */
-  padding: 4px 10px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: rgba(255,255,255,0.02);
-  font-size: 12px;
-  color: var(--muted);
-  margin-top: 10px;
-  white-space: normal;                /* permite wrap */
-  max-width: 100%;                    /* no excede la card */
-  overflow-wrap: anywhere;            /* rompe palabras si hace falta */
-}
-
-    .pill b{ color: var(--text); font-weight: 600; }
-
-    /* Bullets */
-    ul{
-      margin: 10px 0 0;
-      padding-left: 18px;
-      color: var(--muted);
-    }
-    li{ margin: 7px 0; }
-
-    /* Projects */
-    .project h3{
-      display: flex;
-      flex-wrap: wrap;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 10px;
-      margin: 0 0 8px;
-    }
-    .project .stack{
-      font-size: 12px;
-      color: var(--soft);
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.02);
-      padding: 4px 10px;
-      border-radius: 999px;
-      white-space: nowrap;
-    }
-    .project p{ margin: 0; color: var(--muted); font-size: 14px; }
-
-    /* Contact */
-    .contact{
-      display: grid;
-      gap: 10px;
-    }
-    @media (min-width: 900px){
-      .contact{ grid-template-columns: 1.2fr 0.8fr; }
-    }
-    .contact .links{
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 10px;
-    }
-    .link{
-      display: inline-flex;
-      gap: 10px;
-      align-items: center;
-      padding: 10px 12px;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      background: rgba(255,255,255,0.02);
-      font-size: 13px;
-      color: var(--text);
-    }
-
-    footer{
-      margin-top: 26px;
-      color: var(--soft);
-      font-size: 12px;
-      text-align: center;
-    }
-
-    /* Anchor offset for sticky header */
-    .anchor{ scroll-margin-top: 90px; }
-
-    @media (max-width: 560px){
-  header{
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .brand{
-    min-width: 0;          /* clave: permite encogerse */
-    width: 100%;
-  }
-
-  .lang{
-    align-self: flex-end;  /* lo pega a la derecha, pero dentro del header */
-  }
-}
-
-  </style>
+</style>
 </head>
-
 <body>
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <strong>Juan Ignacio Tornero</strong>
-        <div class="meta">
-          <span>Buenos Aires, Argentina (GMT-3)</span>
-          <span>tornerojuan@gmail.com</span>
-          <span>Español: Nativo | Inglés: B2/C1</span>
-        </div>
-      </div>
+<div class="wrap">
+<nav>
+  <div class="brand">Juan Ignacio Tornero</div>
+  <div class="navlinks"><a href="#work">Work</a><a href="#experience">Experience</a><a href="#about">About</a><a href="#contact">Contact</a></div>
+</nav>
 
-      <nav class="lang" aria-label="Idioma">
-        <button class="active" type="button" aria-current="page">ES</button>
-        <button class="disabled" type="button" title="EN (próximamente)" disabled>EN</button>
-      </nav>
-    </header>
-
-    <!-- HERO -->
-    <section class="hero">
-      <h1>QA Automation | Process &amp; Functional Analysis</h1>
-      <div class="title">Calidad técnica aplicada · análisis funcional · optimización de procesos</div>
-      <p>
-        Conectando automatización, análisis funcional y desarrollo para elevar la calidad de los productos digitales.
-      </p>
-
-      <div class="cta">
-        <a class="btn primary" href="#proyectos">Ver proyectos</a>
-        <a class="btn" href="docs/CV_Juan_Ignacio_Tornero_Español.pdf" target="_blank" title="Descargar CV en español">Descargar CV Español</a>
-        <a class="btn" href="docs/CV Juan Ignacio Tornero En.pdf" target="_blank" title="Download CV in English">Download CV English</a>
-
-      </div>
-    </section>
-
-    <!-- SOBRE MI -->
-    <section class="section anchor" id="sobre-mi">
-      <h2>Sobre mí</h2>
-      <p style="margin:0;color:var(--text);max-width:80ch;">
-        Soy un profesional de QA con enfoque técnico y orientación a procesos. Trabajo integrando automatización,
-        análisis funcional y validación de flujos para asegurar calidad sin perder visión de negocio.
-        Cuento con experiencia en entornos de agencia digital, colaborando en múltiples proyectos y equipos en contextos dinámicos.
-        Me interesa la evolución de los equipos de QA hacia modelos más estructurados, escalables y apoyados en automatización.
-      </p>
-    </section>
-
-    <!-- IMPACTO -->
-    <section class="section anchor" id="impacto">
-      <h2>Propuesta de Valor</h2>
-
-<div class="grid three">
-<div class="card">
-  <h3>Automatización y Eficiencia Directa</h3>
-  <p>
-    Desarrollo de scripts, plugins y frameworks a medida (Playwright, JS) para automatizar tareas de alta frecuencia y eliminar cuellos de botella operativos en los ciclos de testing.
-  </p>
-  <div class="pill"><b>Resultado:</b> Reducción de hasta un 70-90% en tiempos de ejecución de pruebas manuales.</div>
-</div>
-
-<div class="card">
-  <h3>Auditoría y Optimización de Procesos</h3>
-  <p>
-    Análisis de flujos de trabajo a través de entrevistas y relevamientos para detectar ineficiencias y oportunidades de mejora, entregando un plan de acción para optimizar el proceso auditado.
-  </p>
-  <div class="pill"><b>Impacto:</b> Ahorro de tiempo estimado del 50-60% y decisiones de mejora basadas en datos.</div>
-</div>
-
-<div class="card">
-  <h3>Transformación Operativa y Estrategia QA</h3>
-  <p>
-    Diseño de la estructura de equipos de Calidad, incluyendo planes de carrera, job descriptions, roadmaps técnicos y métricas para la evolución y profesionalización del área.
-  </p>
-  <div class="pill"><b>Resultado:</b> Capacidades de servicio ampliadas y nuevo modelo operativo.</div>
-</div>
-</div>
-
-
-    </section>
-
-
-
-    <!-- PROYECTOS -->
-    <section class="section anchor" id="proyectos">
-      <h2>Proyectos destacados</h2>
-
-      <div class="grid two">
-        <div class="card project">
-          <h3>
-            Framework de Automatización E2E (Playwright)
-            <span class="stack">Playwright · JavaScript/Typescript · Node.js</span>
-          </h3>
-          <p>
-  Diseñé un framework para automatizar el testing de contenido a gran escala para los modelos de vehículos de una automotriz líder a nivel mundial, un proceso que abarca miles de páginas y componentes. La solución combina Playwright para testing visual y de navegación, procesa hojas de cálculo con excel.js, y utiliza IA para validaciones de datos complejas, culminando en la generación de reportes automáticos. El resultado es una reducción del 70-90% del esfuerzo manual.
-          </p>
-        </div>
-
-
-        
-
-        <div class="card project">
-          <h3>
-            QA Skillmap &amp; Roadmap Técnico
-            <span class="stack">Operación · Estándares · Evolución</span>
-          </h3>
-          <p>
-            Diseño de un roadmap operativo para la evolución técnica del equipo de QA, incluyendo definición de job descriptions,
-            estándares y niveles de crecimiento. Enfoque en estructuración de conocimiento y profesionalización del rol. Seguimiento, obtención de métricas. Desarrollo de las soluciones automatizadas de QA.
-          </p>
-        </div>
-
-        <div class="card project">
-          <h3>
-            Auditoría de Procesos y Diagramación
-            <span class="stack">Análisis · Diagramas · Mejora continua</span>
-          </h3><a href="projects/auditorias/index.html" style="color: aquamarine;">Click para ver detalles  👈</a>
-          <p>
-Realicé una auditoría del proceso de QA para "Eventos", identificando oportunidades clave para disminuir issues. Presenté una propuesta de rediseño y automatización con un ahorro de tiempo estimado del 50-60%, sentando las bases para una operación más escalable.
-          </p>
-        </div>
-
-        <div class="card project">
-          <h3>
-            Tool Interna / Plugin de Validación
-            <span class="stack">JavaScript · DOM · Validaciones</span>
-          </h3>
-          <p>
-  Diseñé un plugin que centraliza herramientas de QA en una interfaz simple, permitiendo que usuarios no técnicos ejecuten pruebas complejas de forma autónoma. Esto no solo estandariza la ejecución y mejora la fiabilidad de los datos, sino que acelera cada tarea en un 60-70%.
-          </p>
-        </div>
-      </div>
-
-      <p style="margin:14px 0 0;color:var(--soft);font-size:12px;">
-      </p>
-    </section>
-
-    <!-- SKILLS -->
-    <section class="section anchor" id="skills">
-      <h2>Skills</h2>
-
-      <div class="grid four">
-        <div class="card">
-          <h3>Automatización</h3>
-          <ul>
-            <li>Playwright (E2E funcional y visual)</li>
-            <li>JavaScript / Node.js</li>
-            <li>SQL (SELECT, JOIN, filtros)</li>
-            <li>Diseño de test cases</li>
-            <li>Validación de flujos dinámicos</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>Análisis &amp; Procesos</h3>
-          <ul>
-            <li>Análisis funcional</li>
-            <li>Auditoría de procesos</li>
-            <li>Diagramación de flujos</li>
-            <li>Optimización operativa</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>Integración &amp; Calidad</h3>
-          <ul>
-            <li>Testing de APIs (Postman)</li>
-            <li>Validación CMS</li>
-            <li>Cross-browser / cross-device</li>
-            <li>Accesibilidad (WCAG, axe DevTools)</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>Herramientas</h3>
-          <ul>
-            <li>JIRA / Xray / Zephyr</li>
-            <li>Git &amp; GitHub</li>
-            <li>Documentación estructurada</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- EDUCACIÓN -->
-    <section class="section anchor" id="formacion">
-      <h2>Educación y formación</h2>
-            <p style="margin-top:12px;">
-  <a href="https://drive.google.com/drive/folders/179C9PmpPxGR-u6xZ-ZNQK6jyDXCor2NP" target="_blank" class="link">
-    Ver certificaciones (Drive)
-  </a>
-</p>
-      <ul>
-        <li>Taller de Playwright – Atenea Conocimientos</li>
-        <li>Cypress Avanzado – Pushing-it</li>
-        <li>Testing / Full Stack JS – Codo a Codo (GCBA)</li>
-        <li>IA en Programación – Digital House</li>
-        <li>Agile &amp; Automated Testing – Coursera</li>
-        <li>Business Process Modelling – Coursera</li>
-        <li>Programación Web FrontEnd – Fundación ProEM</li>
-        <li>Innovación y Transformación Digital – Universidad Di Tella</li>
-      </ul>
-
-    </section>
-
-    <!-- CONTACTO -->
-    <section class="section anchor" id="contacto">
-      <h2>Contacto</h2>
-
-      <div class="contact">
-        <div class="card">
-          <h3 style="margin:0 0 8px;">Disponible para oportunidades</h3>
-          <p style="margin:0;color:var(--muted);">
-            Si quieres conversar sobre QA Automation, análisis funcional o mejora de procesos de calidad,
-            puedes contactarme por estos canales.
-          </p>
-
-          <div class="links">
-            <a class="link" href="mailto:tornerojuan@gmail.com">Email</a>
-            <a class="link" href="https://www.linkedin.com/in/juan-tornero" target="_blank" rel="noreferrer">LinkedIn</a>
-            <a class="link" href="https://github.com/jitornero" target="_blank" rel="noreferrer">GitHub</a>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3 style="margin:0 0 8px;">Navegación</h3>
-          <ul style="margin:0;">
-            <li><a href="#sobre-mi">Sobre mí</a></li>
-            <li><a href="#impacto">Impacto</a></li>
-            <li><a href="#proyectos">Proyectos</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#formacion">Formación</a></li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      © <span id="year"></span> Juan Ignacio Tornero · GitHub Pages
-    </footer>
+<main>
+<section class="hero">
+  <div class="eyebrow">Senior QA Automation Engineer · Buenos Aires</div>
+  <h1>I turn quality processes into scalable systems.</h1>
+  <p>Automation engineering, AI-assisted quality, and process improvement for complex digital products.</p>
+  <div class="actions">
+    <a class="btn primary" href="#work">View selected work</a>
+    <a class="btn" href="https://www.linkedin.com/in/juan-tornero" target="_blank">LinkedIn ↗</a>
+    <a class="btn" href="https://github.com/jitornero" target="_blank">GitHub ↗</a>
   </div>
+  <div class="submeta"><span>Buenos Aires, Argentina</span><span>Working globally</span><span>Automation · AI · Quality Operations</span></div>
+</section>
+</div>
 
-  <script>
-    // Solo para el año del footer. El toggle EN se activará cuando agreguemos el contenido en inglés.
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+<section class="manifesto">
+<div class="wrap">
+  <div class="kicker">Approach</div>
+  <blockquote>Good automation starts before the first line of code.</blockquote>
+  <p>I start by understanding the process. Then I identify what should be standardized, what is worth automating, and where technology can create meaningful impact.</p>
+  <div class="process">
+    <div><b>01</b>Understand</div><div><b>02</b>Standardize</div><div><b>03</b>Automate</div><div><b>04</b>Measure</div><div><b>05</b>Improve</div>
+  </div>
+</div>
+</section>
+
+<div class="wrap">
+<section>
+  <div class="section-head"><div><div class="kicker">What I do</div><h2>Quality, beyond testing.</h2></div><p>I combine engineering, process analysis, and operations to build quality systems designed to be reliable, maintainable, and scalable.</p></div>
+  <div class="capabilities">
+    <article class="cap"><span class="num">01</span><h3>Automation Engineering</h3><p>Design and evolution of E2E automation systems, frameworks, and execution strategies focused on reliability, maintainability, and scale.</p></article>
+    <article class="cap"><span class="num">02</span><h3>AI-enabled Quality</h3><p>Reusable AI-assisted workflows that accelerate test analysis, automation development, code review, test data generation, and operational processes.</p></article>
+    <article class="cap"><span class="num">03</span><h3>Quality & Operations</h3><p>Process analysis, auditing, standardization, and cross-functional coordination to improve how teams build and deliver quality.</p></article>
+  </div>
+</section>
+</div>
+
+<section class="work" id="work">
+<div class="wrap">
+  <div class="section-head"><div><div class="kicker">Selected work</div><h2>Problems solved.</h2></div><p>Selected work where automation, process design, and engineering judgment come together to solve real operational and quality problems.</p></div>
+
+  <article class="case">
+    <div class="case-meta">01 / CURRENT WORK<br>Momentus Technologies (US)<br>2026 — Present</div>
+    <div>
+      <h3>Scaling quality for an AI-powered SaaS product.</h3>
+      <p>E2E automation and quality engineering for Momentus Sales AI in a fast-paced, AI-first delivery environment. The work combines automated coverage, framework evolution, and process standardization across QA, Automation, and Development.</p>
+      <div class="tags"><span class="tag">Playwright + TypeScript</span><span class="tag">AI-assisted Engineering</span><span class="tag">Framework Improvement</span><span class="tag">Quality Operations</span></div>
+    </div>
+  </article>
+
+  <article class="case">
+    <div class="case-meta">02 / CASE STUDY<br>Process redesign & automation</div>
+    <div>
+      <h3>From repetitive validation to a scalable QA workflow.</h3>
+      <p>Audit and redesign of a high-volume digital asset validation process, combining standardization, automation, and reporting to reduce manual effort and improve consistency.</p>
+      <div class="metrics">
+        <div class="metric"><strong>&lt; 1 min</strong><span>per asset · previously 5–10 min</span></div>
+        <div class="metric"><strong>10–20 min</strong><span>per campaign · previously 1–2 h</span></div>
+        <div class="metric"><strong>50–60%</strong><span>estimated time savings</span></div>
+      </div>
+      <div class="actions"><a class="btn" href="projects/auditorias/index.html">Explore case study →</a></div>
+    </div>
+  </article>
+
+  <article class="case">
+    <div class="case-meta">03 / QUALITY OPERATIONS<br>Team enablement</div>
+    <div>
+      <h3>Building a more scalable QA operating model.</h3>
+      <p>Designed standards, skill maps, technical roadmaps, metrics, and automation solutions to strengthen QA operations and support the evolution of teams and services.</p>
+      <div class="tags"><span class="tag">Process Design</span><span class="tag">Quality Strategy</span><span class="tag">Automation</span><span class="tag">Team Enablement</span></div>
+    </div>
+  </article>
+</div>
+</section>
+
+<div class="wrap">
+<section id="experience">
+  <div class="experience">
+    <div><div class="kicker">Experience</div><h2 style="font-size:48px;letter-spacing:-.05em;line-height:1.02">Technical depth.<br>Operational perspective.</h2></div>
+    <div class="timeline">
+      <div class="role"><time>2026 — Present</time><div><h3>Senior QA Automation Engineer · Huenei / Momentus Technologies (US)</h3><p>Automation Engineering · AI-first Quality · Process Standardization</p></div></div>
+      <div class="role"><time>2023 — 2026</time><div><h3>QA Automation Coordinator · VML</h3><p>Project Leadership · Quality Auditing · Automation · Team Enablement</p></div></div>
+      <div class="role"><time>2021 — 2023</time><div><h3>QA Analyst → QA Senior · VML</h3><p>Functional Quality · Digital Products · QA Operations</p></div></div>
+      <div class="role"><time>2020 — 2021</time><div><h3>QA Analyst · Freelance</h3><p>Functional testing · Test design · Validation</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="aboutgrid">
+    <div><div class="kicker">About</div><p class="aboutcopy">I work at the intersection of technology, processes, and quality.</p></div>
+    <div class="aboutside">
+      <p>My focus goes beyond automating tasks. I work to understand how a process operates, identify where time or quality is being lost, and design solutions that can be maintained and scaled.</p>
+      <p>Throughout my career, I have worked across functional testing, automation engineering, process auditing, project coordination, and QA operations improvement.</p>
+      <div class="expertise"><span>Playwright + TypeScript</span><span>JavaScript / Node.js</span><span>AI-assisted QA</span><span>API Testing</span><span>SQL</span><span>Git & GitHub</span><span>Jira</span><span>CI/CD</span><span>Azure DevOps</span><span>Accessibility</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-head"><div><div class="kicker">Selected education</div><h2>Continuous learning.</h2></div></div>
+  <div class="education">
+    <div>Innovation & Digital Transformation — Universidad Di Tella</div>
+    <div>Business Process Modelling — Coursera</div>
+    <div>Agile & Automated Testing — Coursera</div>
+    <div>Playwright Workshop — Atenea Conocimientos</div>
+    <div>AI in Programming — Digital House</div>
+    <div>Advanced Cypress — Pushing-it</div>
+  </div>
+</section>
+
+<section class="cta-end" id="contact">
+  <div class="kicker">Contact</div>
+  <h2>Have a quality problem worth solving?</h2>
+  <p>Automation engineering · AI-assisted quality · Process improvement</p>
+  <div class="actions" style="justify-content:center"><a class="btn primary" href="mailto:tornerojuan@gmail.com">Email me</a><a class="btn" href="https://www.linkedin.com/in/juan-tornero" target="_blank">LinkedIn ↗</a></div>
+</section>
+
+<footer><span>© 2026 Juan Ignacio Tornero</span><span>Buenos Aires, Argentina</span></footer>
+</div>
+</main>
 </body>
 </html>
